@@ -1,0 +1,67 @@
+<!DOCTYPE html><html><body><p id="demo"></p><script>
+
+"use strict";
+
+
+const log = (e) => { var _a; const div = document.createElement("div"); div.innerText = e; (_a = document.getElementById("demo")) === null || _a === void 0 ? void 0 : _a.appendChild(div); };
+const dict = new Map();
+const links = [
+    202,
+];
+function search(json, id) {
+    for (const key in json.mapping) {
+        if (!Object.hasOwn(json.mapping, key))
+            continue;
+        const message = json.mapping[key].message;
+        if(!message || !message.content)
+            continue;
+        if(message.content.content_type == "text"){
+            if(message.author.role == "user")
+            {
+                let html = "";
+                message.content.parts.forEach((value)=>{
+                    html += value;
+                });
+                html = html.toLowerCase();
+                const val = [id,key];
+                if (dict.has(html)) {
+                    const arr = dict.get(html);
+                    arr === null || arr === void 0 ? dict.set(html, new Array(val)) : arr.push(val);
+                }
+                else {
+                    dict.set(html, new Array(val));
+                }
+            }
+        }
+    }
+}
+function process(id) {
+    return new Promise((success, reject) => {
+        fetch(`/chats/${id}.json`).then((respond) => {
+            if (respond.ok)
+                respond.json().then((blob) => {
+                    search(blob, id);
+                    success();
+                }, reject);
+            else
+                reject(respond.statusText);
+        }, reject);
+    });
+}
+function mapToObj(map) {
+    const obj = {};
+    for (let [key, value] of map)
+        obj[key] = value;
+    return obj;
+}
+async function iterate() {
+    for (let index = 0; index < links.length; index++) {
+        const value = links[index];
+        await process(value);
+    }
+    log(JSON.stringify(mapToObj(new Map([...dict.entries()].sort()))));
+}
+;
+iterate();
+
+</script></body></html> 

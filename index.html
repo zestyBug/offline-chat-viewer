@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="light" style="color-scheme: light;">
+
+<head>
+    <title>ChatGPT</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-itunes-app" content="app-id=6448311069">
+    <meta name="dd-trace-id" content="931208831391387162">
+    <meta name="dd-trace-time" content="1759936557820">
+    <meta name="description" content="ChatGPT helps you get answers, find inspiration and be more productive. It is free to use and easy to try. Just ask and ChatGPT can help with writing, learning, brainstorming and more.">
+    <meta name="keyword" content="ai chat,ai,chap gpt,chat gbt,chat gpt 3,chat gpt login,chat gpt website,chat gpt,chat gtp,chat openai,chat,chatai,chatbot gpt,chatg,chatgpt login,chatgpt,gpt chat,open ai,openai chat,openai chatgpt,openai">
+    <meta property="og:description" content="A conversational AI system that listens, learns, and challenges">
+    <meta property="og:url" content="/">
+    <meta property="og:site_name" content="ChatGPT">
+    <meta property="og:title" content="ChatGPT">
+    <meta property="og:image" content="/assets/images/chatgpt-share.webp">
+    <script src="/assets/darkmode.js"></script>
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon-180x180.webp">
+    <link rel="stylesheet" type="text/css" href="/assets/root.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/conversation-small.css">
+    <link rel="stylesheet" type="text/css" href="/assets/ansi.css">
+    <link rel="stylesheet" type="text/css" href="/assets/table-components.css">
+    <link rel="stylesheet" type="text/css" href="/assets/FormattedText.css">
+    <link rel="stylesheet" type="text/css" href="/assets/custom.css">
+</head>
+<body class="relative flex h-full w-full flex-row transition-colors">
+    <aside id="stage-slideover-sidebar" class="not-printable flex flex-col border-token-border-light relative h-inherit shrink-0 overflow-hidden border-e before:absolute before:inset-0 before:transition before:duration-250 before:starting:opacity-0">
+            <div id="stage-sidebar-colapse-bar" class="group/tiny-bar flex h-full w-(--sidebar-rail-width) cursor-e-resize flex-col items-start bg-transparent pb-1.5 motion-safe:transition-colors rtl:cursor-w-resize absolute inset-0">
+                <div class="h-header-height flex items-center justify-center">
+                    <button onclick="defaultExpand()" title="Open sidebar" tabindex="0" data-fill="" class="group __menu-item hoverable gap-1.5 cursor-e-resize rtl:cursor-w-resize">
+                        <div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50 icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="icon -m-1 group-hover/tiny-bar:hidden group-focus-visible:hidden"><use href="/assets/images/sprites-core.svg#blossom" fill="currentColor"></use></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="icon hidden group-hover/tiny-bar:block group-focus-visible:block"><use href="/assets/images/sprites-core.svg#836f7a" fill="currentColor"></use></svg>
+                        </div>
+                    </button>
+                </div>
+                <div class="mt-(--sidebar-section-first-margin-top)">
+                    <a href="/" onclick="onClick(event)" title="New chat Ctrl+Shift+O" class="group __menu-item hoverable gap-1.5" tabindex="0" data-fill="" data-link="">
+                        <div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50 icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon"><use href="/assets/images/sprites-core.svg#3a5c87" fill="currentColor"></use></svg>
+                        </div>
+                    </a>
+                    <button onclick="popup_searchbar()" title="Search chats Ctrl+K" class="group __menu-item hoverable gap-1.5" tabindex="0" data-fill="">
+                        <div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50 icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon"><use href="/assets/images/sprites-core.svg#ac6d36" fill="currentColor"></use></svg>
+                        </div>
+                    </button>
+                    <a href="/?c=0#pin" onclick="onClick(event)" title="Pinned chats" class="group __menu-item hoverable gap-1.5" tabindex="0" data-fill="" data-link="">
+                        <div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50 icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon"><use href="/assets/images/sprites-core.svg#23d2ff" fill="currentColor"></use></svg>
+                        </div>
+                    </a>
+                </div>
+                <div class="pointer-events-none flex-grow"></div>
+                <div class="mb-1">
+                    <button onclick="setting_open(event)" tabindex="0" data-fill="" data-size="large" class="group __menu-item gap-2 p-2">
+                        <div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50 icon-lg">
+                            <div class="flex overflow-hidden rounded-full select-none bg-gray-500/30 h-6 w-6 shrink-0">
+                                <img class="h-6 w-6 shrink-0 object-cover" referrerpolicy="no-referrer" src="/assets/images/user.jpg">
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div id="stage-sidebar-expand-bar" class="h-full w-[var(--sidebar-width)] overflow-x-clip overflow-y-auto text-clip whitespace-nowrap">
+                <nav class="group/scrollport relative flex h-full w-full flex-1 flex-col overflow-y-auto transition-opacity duration-500 bg-token-bg-elevated-secondary">
+                    <div class="short:group-data-scrolled-from-top/scrollport:shadow-(--sharp-edge-top-shadow) bg-token-bg-elevated-secondary sticky top-0 z-30">
+                        <div class="touch:px-1.5 px-2">
+                            <div class="h-header-height flex items-center justify-between">
+                                <button onclick="router('')" class="text-token-text-primary no-draggable hover:bg-token-surface-hover keyboard-focused:bg-token-surface-hover touch:h-10 touch:w-10 flex h-9 w-9 items-center justify-center rounded-lg disabled:opacity-50">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="icon"><use href="/assets/images/sprites-core.svg#blossom" fill="currentColor"></use></svg>
+                                </button>
+                                <button onclick="defaultColapse()" title="Close sidebar" data-rtl-flip="" class="text-token-text-tertiary no-draggable hover:bg-token-surface-hover keyboard-focused:bg-token-surface-hover touch:h-10 touch:w-10 flex h-9 w-9 items-center justify-center rounded-lg disabled:opacity-50 no-draggable cursor-w-resize rtl:cursor-e-resize">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="icon max-md:hidden"><use href="/assets/images/sprites-core.svg#836f7a" fill="currentColor"></use></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="icon md:hidden"><use href="/assets/images/sprites-core.svg#85f94b" fill="currentColor"></use></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group/sidebar-expando-section mb-[var(--sidebar-expanded-section-margin-bottom)]">
+                        <aside class="pt-(--sidebar-section-first-margin-top) last:mb-5 tall:sticky tall:top-header-height tall:z-20 not-tall:relative bg-token-bg-elevated-secondary [--sticky-spacer:6px]">
+                            <a href="/" onclick="onClick(event)" tabindex="0" data-fill="" class="group __menu-item hoverable" data-link="">
+                                <div class="flex min-w-0 items-center gap-1.5">
+                                    <div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50 icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon"><use href="/assets/images/sprites-core.svg#3a5c87" fill="currentColor"></use></svg>
+                                    </div>
+                                    <div class="flex min-w-0 grow items-center gap-2.5"><div class="truncate">New chat</div></div>
+                                </div>
+                                <div class="trailing highlight text-token-text-tertiary">
+                                    <div class="inline-flex whitespace-pre *:inline-flex *:font-sans *:not-last:after:px-0.5 *:not-last:after:content-['+'] touch:hidden"><kbd title="Control"><span class="min-w-[1em]">Ctrl</span></kbd><kbd title="Shift"><span class="min-w-[1em]">Shift</span></kbd><kbd><span class="min-w-[1em]">O</span></kbd></div>
+                                </div>
+                            </a>
+                            <div onclick="popup_searchbar()" tabindex="0" data-fill="" class="group __menu-item hoverable">
+                                <div class="flex min-w-0 items-center gap-1.5"><div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50 icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon"><use fill="currentColor" href="/assets/images/sprites-core.svg#ac6d36"></use></svg>
+                                </div>
+                                <div class="flex min-w-0 grow items-center gap-2.5"><div class="truncate">Search chats</div></div></div>
+                                <div class="trailing highlight text-token-text-tertiary"><div class="inline-flex whitespace-pre *:inline-flex *:font-sans *:not-last:after:px-0.5 *:not-last:after:content-['+'] touch:hidden"><kbd title="Control"><span class="min-w-[1em]">Ctrl</span></kbd><kbd><span class="min-w-[1em]">K</span></kbd></div></div>
+                            </div>
+                            <a href="/?c=0#pin" onclick="onClick(event)" tabindex="0" data-fill="" class="group __menu-item hoverable" data-link="">
+                                <div class="flex min-w-0 items-center gap-1.5">
+                                    <div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50 icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon"><use href="/assets/images/sprites-core.svg#23d2ff" fill="currentColor"></use></svg>
+                                    </div>
+                                    <div class="flex min-w-0 grow items-center gap-2.5"><div class="truncate">Pined chats</div></div>
+                                </div>
+                            </a>
+                        </aside>
+                        <a href="/?c=0" onclick="onClick(event)" tabindex="0" data-fill="" class="group hoverable" data-no-hover-bg="true" data-no-contents-gap="true" data-link="">
+                            <div class="text-token-text-tertiary __menu-item flex items-center justify-start gap-0.5">
+                                <h2 class="__menu-label" data-no-spacing="true">Chats</h2>
+                            </div>
+                        </a>
+                        <div id="history"></div>
+                    </div>
+                    <div class="grow"></div>
+                    <div class="relative sticky bottom-0 z-20 empty:hidden bg-token-bg-elevated-secondary py-1.5 group-data-scrolled-from-end/scrollport:shadow-(--sharp-edge-bottom-shadow)">
+                                <div onclick="setting_open(event)" title="Open setting" role="button" type="button" tabindex="0" class="group __menu-item hoverable" data-size="large" style="text-align: inherit;">
+                                    <div class="flex min-w-0 items-center gap-2">
+                                        <div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50 icon-lg">
+                                            <div class="flex overflow-hidden rounded-full select-none bg-gray-500/30 h-6 w-6 shrink-0">
+                                                <!-- <div class="flex h-full w-full items-center justify-center bg-blue-300 text-white dark:bg-blue-500">
+                                                    <img class="icon" src="/assets/images/avatar.svg">
+                                                </div> -->
+                                                <img class="h-6 w-6 shrink-0 object-cover" referrerpolicy="no-referrer" src="/assets/images/user.jpg">
+                                            </div>
+                                        </div>
+                                        <div class="min-w-0">
+                                            <div class="flex min-w-0 grow items-center gap-2.5 group-data-no-contents-gap:gap-0"><div id="name-holder" class="truncate"></div></div>
+                                            <div class="not-group-data-disabled:text-token-text-tertiary leading-dense mb-0.5 text-xs group-data-sheet-item:mt-0.5 group-data-sheet-item:mb-0"><div class="truncate">Free</div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                </nav>
+            </div>
+    </aside>
+    <div id="main" class="focus-visible:outline-0 group/thread @container/thread transition-width h-full w-full relative composer-parent flex flex-col flex-1 overflow-hidden -translate-y-[calc(env(safe-area-inset-bottom,0px)/2)] pt-[calc(env(safe-area-inset-bottom,0px)/2)]">
+            <header id="page-header" class="z-10 draggable no-draggable-children sticky top-0 p-2 touch:p-2.5 flex items-center justify-between h-header-height bg-token-main-surface-primary pointer-events-none select-none *:pointer-events-auto motion-safe:transition thread-xl:start-0 thread-xl:end-0 thread-xl:shadow-none! thread-xl:bg-transparent [box-shadow:var(--sharp-edge-top-shadow)]">
+                <div id="header-message" class="absolute start-1/2 flex flex-col items-center gap-2 ltr:-translate-x-1/2 rtl:translate-x-1/2"></div>
+                <div class="no-draggable flex items-center">
+                    <button onclick="defaultExpand()" type="button" class="not-printable md:hidden hover:text-token-text-primary touch:h-10 touch:w-10 inline-flex h-9 w-9 items-center justify-center rounded-md focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset active:opacity-50"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="icon-lg text-token-text-secondary mx-2"><use href="/assets/images/sprites-core.svg#38e54b" fill="currentColor"></use></svg></button>
+                    <div class="group flex justify-center items-center gap-1 rounded-lg min-h-9 touch:min-h-10 px-2.5 text-lg font-normal"><div class="header-wordmark">ChatGPT</div></div>
+                </div>
+                <div id="header-btns" class="flex items-center justify-center"></div>
+            </header>
+            <main id="scrollable" class="flex flex-col h-full text-base overflow-y-auto grow pb-10 basis-auto pt-(--header-height) -mb-(--composer-overlap-px) [--composer-overlap-px:28px] [scrollbar-gutter:stable_both-edges]" style="--pip-widget-height: 0px;">
+                <!-- DATA -->
+            </main>
+            <footer class="group/thread-bottom-container pointer-events-none relative isolate z-1 w-full basis-auto has-data-has-thread-error:pt-2 has-data-has-thread-error:[box-shadow:var(--sharp-edge-bottom-shadow)] md:border-transparent md:pt-0 dark:border-white/20 md:dark:border-transparent content-fade single-line flex flex-col">
+                <div class="text-token-text-secondary relative mt-auto flex min-h-8 w-full items-center justify-center p-2 text-center text-xs md:px-[60px]">
+                    <div class="pointer-events-auto">ChatGPT can make mistakes. Check important info.</div>
+                </div>
+            </footer>
+    </div>
+    <script>const HTML_FILE_ADDRESS = "/";</script>
+    <script src="/assets/marked.min.js"></script>
+    <script src="/assets/renderer.js"></script>
+    <script src="/assets/defs.js"></script>
+    <script src="/assets/setting.js"></script>
+    <script src="/assets/script.js"></script>
+</body>
+
+</html>
