@@ -192,7 +192,16 @@ function share(element,id) {
 const processDoc = (doc,article_id)=>{
     if(!scrollable)
         return;
-    if(!doc.mapping)
+    if(typeof doc != "object")
+        return;
+    if(
+        typeof doc.data == "object" &&
+        typeof doc.data.biz_data == "object" &&
+        typeof doc.data.biz_data.chat_session == "object" &&
+        typeof doc.data.biz_data.chat_messages == "object"
+    )
+        doc = translateDS(doc,article_id);
+    if(typeof doc.mapping != "object")
         return;
     scrollable.replaceChildren();
     const observer = new IntersectionObserver(entries => {
@@ -328,6 +337,51 @@ const processDoc = (doc,article_id)=>{
     scrollable.dispatchEvent(new Event("scroll"));
     scrollable.focus();
     document.title = doc.title;
+};
+
+/**
+ * 
+ * @param {{code:number, msg:string,data:{biz_code:number, biz_msg:string, biz_data:{chat_session:{title:string,current_message_id:number},chat_messages:{message_id:number,parent_id:number|null,role:"USER"|"ASSISTANT",fragments:{id:number,type:"REQUEST"|"THINK"|"RESPONSE"|"TIP",content:string}[]}[]}}}} doc 
+ */
+const translateDS = (doc,article_id)=>{
+    /** @type {{title:string ,conversation_id:number ,mapping: Map<string,{message: {author: {role:"assistant"|"user"}, metadata:{model_slug?:string, resolved_model_slug?:string}, content:{content_type: "text", parts:string[]}, parent:string, children:string[]}}>}} */
+    let ret = {};
+    ret.title = doc.data.biz_data.chat_session.title;
+    ret.current_node = doc.data.biz_data.chat_session.current_message_id;
+    ret.conversation_id = 0;
+    ret.mapping = {};
+    const chat_messages = doc.data.biz_data.chat_messages;
+    chat_messages.forEach((value)=>{
+        let parts = [];
+        value.fragments.forEach((value)=>{
+            if(value.type == "RESPONSE" || value.type == "REQUEST"){
+                parts = parts.concat(value.content);
+            }
+        })
+        ret.mapping[value.message_id] = {
+            "message": {
+                "author": {
+                    "role": value.role.toLowerCase()
+                },
+                "content": {
+                    "content_type": "text",
+                    parts
+                }
+            },
+            "parent": value.parent_id,
+            "children": []
+        };
+    });
+    for (const key in ret.mapping) {
+        if (!Object.hasOwn(ret.mapping, key)) continue;
+        const element = ret.mapping[key];
+        if(element.parent){
+            const parent = ret.mapping[element.parent];
+            parent.children = parent.children.concat(Number(key));
+        }
+        
+    }
+    return ret;
 };
 
 /**

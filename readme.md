@@ -34,6 +34,22 @@ click on copy on any message in the page, it give script access to clipboard for
 navigator.clipboard.writeText(res);
 ```
 
+### Deepseek
+As of right now, Deepseek response format is totally supported, and its more straight forward.\
+Responses are converted internally.
+
+``` js
+res=await fetch("https://chat.deepseek.com/api/v0/chat/history_messages?chat_session_id=abcd1234-1234-1234-1234-abcd12345678", {
+    "credentials": "include",
+    "headers": {
+        ///
+    },
+    "method": "GET",
+    "mode": "cors"
+});
+```
+
+
 ## Also
 
 #### chats/0.json
