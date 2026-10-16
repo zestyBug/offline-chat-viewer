@@ -7,7 +7,11 @@ First, you need to setup a web server, hosting files inside this repo.\
 Then you will provide the conversation JSON files you want to view. This part is tricky. The API changes often and I can't provide a solid solution. You need to download the conversation manually.\
 save the JSON data inside the chat folder.(i.e ```/chat/123.json```). Thenn chat will be accessible via ```/?c=ID``` URL (i.e ```http://localhost/?c=123```)
 
-### How to download my conversation JSON file
+#### update
+As of Oct 2026, a ChatGPT response includes a combination of markdown and html contents that markdown library cant render correctly.
+
+## How to download my conversation JSON file
+### ChatGPT
 As of right now (Aug 2026), Use your browser (Firefox) debugger menu. Open the desired web page. In the network inspection look for something like ``` https://chatgpt.com/backend-api/conversations/abcd1234-1234-1234-1234-abcd12345678?include_has_versions=true&num_turns=10 ```. Right click on it, and click 'fetch in console'. Change the URL to ``` https://chatgpt.com/backend-api/conversation/abcd1234-1234-1234-1234-abcd12345678 ```. Add a "res=" at the beginning.
 it becomes something like:
 ``` js

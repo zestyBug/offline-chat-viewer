@@ -23,16 +23,14 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon-180x180.webp">
     <link rel="stylesheet" type="text/css" href="/assets/root.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/conversation-small.css">
-    <link rel="stylesheet" type="text/css" href="/assets/ansi.css">
     <link rel="stylesheet" type="text/css" href="/assets/table-components.css">
-    <link rel="stylesheet" type="text/css" href="/assets/FormattedText.css">
     <link rel="stylesheet" type="text/css" href="/assets/custom.css">
 </head>
 <body class="relative flex h-full w-full flex-row transition-colors">
     <aside id="stage-slideover-sidebar" class="not-printable flex flex-col border-token-border-light relative h-inherit shrink-0 overflow-hidden border-e before:absolute before:inset-0 before:transition before:duration-250 before:starting:opacity-0">
             <div id="stage-sidebar-colapse-bar" class="group/tiny-bar flex h-full w-(--sidebar-rail-width) cursor-e-resize flex-col items-start bg-transparent pb-1.5 motion-safe:transition-colors rtl:cursor-w-resize absolute inset-0">
                 <div class="h-header-height flex items-center justify-center">
-                    <button onclick="defaultExpand()" title="Open sidebar" tabindex="0" data-fill="" class="group __menu-item hoverable gap-1.5 cursor-e-resize rtl:cursor-w-resize">
+                    <button onclick="defaultExpand()" title="Open sidebar Ctrl+Shift+S" tabindex="0" data-fill="" class="group __menu-item hoverable gap-1.5 cursor-e-resize rtl:cursor-w-resize">
                         <div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50 icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="icon -m-1 group-hover/tiny-bar:hidden group-focus-visible:hidden"><use href="/assets/images/sprites-core.svg#blossom" fill="currentColor"></use></svg>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="icon hidden group-hover/tiny-bar:block group-focus-visible:block"><use href="/assets/images/sprites-core.svg#836f7a" fill="currentColor"></use></svg>
@@ -75,10 +73,15 @@
                                 <button onclick="router('')" class="text-token-text-primary no-draggable hover:bg-token-surface-hover keyboard-focused:bg-token-surface-hover touch:h-10 touch:w-10 flex h-9 w-9 items-center justify-center rounded-lg disabled:opacity-50">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="icon"><use href="/assets/images/sprites-core.svg#blossom" fill="currentColor"></use></svg>
                                 </button>
-                                <button onclick="defaultColapse()" title="Close sidebar" data-rtl-flip="" class="text-token-text-tertiary no-draggable hover:bg-token-surface-hover keyboard-focused:bg-token-surface-hover touch:h-10 touch:w-10 flex h-9 w-9 items-center justify-center rounded-lg disabled:opacity-50 no-draggable cursor-w-resize rtl:cursor-e-resize">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="icon max-md:hidden"><use href="/assets/images/sprites-core.svg#836f7a" fill="currentColor"></use></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="icon md:hidden"><use href="/assets/images/sprites-core.svg#85f94b" fill="currentColor"></use></svg>
-                                </button>
+                                <span style="display: flex;">
+                                    <button onclick="popup_searchbar()" title="Search" data-rtl-flip="" class="text-token-text-tertiary no-draggable hover:bg-token-surface-hover keyboard-focused:bg-token-surface-hover touch:h-10 touch:w-10 flex h-9 w-9 items-center justify-center rounded-lg disabled:opacity-50 no-draggable rtl:cursor-e-resize">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon"><use fill="currentColor" href="/assets/images/sprites-core.svg#ac6d36"></use></svg>
+                                    </button>
+                                    <button onclick="defaultColapse()" title="Close sidebar" data-rtl-flip="" class="text-token-text-tertiary no-draggable hover:bg-token-surface-hover keyboard-focused:bg-token-surface-hover touch:h-10 touch:w-10 flex h-9 w-9 items-center justify-center rounded-lg disabled:opacity-50 no-draggable cursor-w-resize rtl:cursor-e-resize">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="icon max-md:hidden"><use href="/assets/images/sprites-core.svg#836f7a" fill="currentColor"></use></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="icon md:hidden"><use href="/assets/images/sprites-core.svg#85f94b" fill="currentColor"></use></svg>
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -95,13 +98,6 @@
                                     <div class="inline-flex whitespace-pre *:inline-flex *:font-sans *:not-last:after:px-0.5 *:not-last:after:content-['+'] touch:hidden"><kbd title="Control"><span class="min-w-[1em]">Ctrl</span></kbd><kbd title="Shift"><span class="min-w-[1em]">Shift</span></kbd><kbd><span class="min-w-[1em]">O</span></kbd></div>
                                 </div>
                             </a>
-                            <div onclick="popup_searchbar()" tabindex="0" data-fill="" class="group __menu-item hoverable">
-                                <div class="flex min-w-0 items-center gap-1.5"><div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50 icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true" class="icon"><use fill="currentColor" href="/assets/images/sprites-core.svg#ac6d36"></use></svg>
-                                </div>
-                                <div class="flex min-w-0 grow items-center gap-2.5"><div class="truncate">Search chats</div></div></div>
-                                <div class="trailing highlight text-token-text-tertiary"><div class="inline-flex whitespace-pre *:inline-flex *:font-sans *:not-last:after:px-0.5 *:not-last:after:content-['+'] touch:hidden"><kbd title="Control"><span class="min-w-[1em]">Ctrl</span></kbd><kbd><span class="min-w-[1em]">K</span></kbd></div></div>
-                            </div>
                             <a href="/?c=0#pin" onclick="onClick(event)" tabindex="0" data-fill="" class="group __menu-item hoverable" data-link="">
                                 <div class="flex min-w-0 items-center gap-1.5">
                                     <div class="flex items-center justify-center group-disabled:opacity-50 group-data-disabled:opacity-50 icon">

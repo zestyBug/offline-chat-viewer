@@ -187,48 +187,7 @@ function share(element,id) {
 
 /**
  * 
- * @param {HTMLButtonElement | undefined | null} element
- */
-function copyCode(element) {
-    const pre = element?.closest("pre");
-    try {
-        if(!pre) throw Error("");
-        const textToPutOnClipboard = parse_pre(pre);
-        if(!textToPutOnClipboard) throw Error("");
-        if (isIe) window.clipboardData.setData('Text', textToPutOnClipboard);
-        else      navigator.clipboard.writeText(textToPutOnClipboard);
-        if(element) element.replaceChildren(SVGS[4].cloneNode(true));
-    } catch (e) {
-        if(element) element.replaceChildren(SVGS[3].cloneNode(true));
-    }
-    if(element)
-        setTimeout(()=>{ element.replaceChildren(SVGS[2].cloneNode(true)); },1000);
-};
-
-/**
- * 
- * @param {HTMLButtonElement | undefined | null} element
- */
-function copyTable(element) {
-    const table = element?.parentNode?.parentNode?.parentNode?.parentNode?.querySelector("table");
-    try {
-        if(!table) throw Error("");
-        const textToPutOnClipboard = parse_table(table);
-        if(!textToPutOnClipboard) throw Error("");
-        if (isIe) window.clipboardData.setData('Text', textToPutOnClipboard);
-        else      navigator.clipboard.writeText(textToPutOnClipboard);
-        if(element) element.replaceChildren(SVGS[4].cloneNode(true));
-    } catch (e) {
-        if(element) element.replaceChildren(SVGS[3].cloneNode(true));
-    }
-    if(element)
-        setTimeout(()=>{ element.replaceChildren(SVGS[2].cloneNode(true)); },1000);
-};
-
-
-/**
- * 
- * @param {{title:string ,conversation_id:number ,mapping: Map<string,{message: {author: {role:"assistant"|"user"}, metadata:{model_slug?:string, resolved_model_slug?:string}, content:{content_type: "text", parts:string[]}, parent:string, children:string[]}}>}} doc 
+ * @param {{title:string, conversation_id:number, current_node:string, mapping: Map<string,{message: {author: {role:"assistant"|"user"}, metadata:{model_slug?:string, resolved_model_slug?:string}, content:{content_type: "text", parts:string[]}, parent:string, children:string[]}}>}} doc 
  */
 const processDoc = (doc,article_id)=>{
     if(!scrollable)
@@ -249,14 +208,16 @@ const processDoc = (doc,article_id)=>{
                 message.content.parts.forEach((value)=>{
                     html += value;
                 });
+                if(html == "")
+                    html = "N/A";
                 if(element.getAttribute("data-turn") != "assistant"){
                     element.querySelector("div.whitespace-pre-wrap").innerHTML = html;
                 }else{
                     html = html.replace(/entity\["[a-zA-Z_]*","(.*?)","(.*?)"\]/g, "[$1](#)");
                     html = html.replace(/url(.*?)(.*?)/g, "[$1]($2)");
                     html = html.replace(/image_group(.*?)/g, "");
-                    html = html.replace(/cite(.*?)(.*?)/g, "[N/A](#)");
-                    html = html.replace(/cite(.*?)/g, "[N/A](#)");
+                    html = html.replace(/cite(.*?)(.*?)/g, "[#](#)");
+                    html = html.replace(/cite(.*?)/g, "[#](#)");
                     html = html.replace(/genui{"pronunciation_block_widget_v4_audio_fix_v2":{"content":"(.*?)","pronunciation_hint":"(.*?)","pronunciation_language":"(.*?)"}}/g, "$1 ($2)");    
                     element.querySelector("div.markdown").innerHTML = marked.parse(html);
                 }

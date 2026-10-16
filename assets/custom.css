@@ -136,7 +136,9 @@ html:not(.screen-arch) .screen-arch\:visible {
 #main.hide-answer       .answer-switch svg:nth-child(1) { display: none !important; }
 #main:not(.hide-answer) .answer-switch svg:nth-child(2)  { display: none !important; }
 #main.hide-answer article[data-turn=assistant] { display: none !important; }
-
+#main.hide-answer #scrollable {
+    padding-bottom: 90vh;
+}
 :root {
     --custom-theme-user-msg-bg:                         #ffe8f3;
     --custom-theme-user-msg-text:                       #4d1f34;
